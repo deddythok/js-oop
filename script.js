@@ -1,10 +1,3 @@
-// functions constructor
-
-// var uwais = {
-// 	name : 'Uwais',
-// 	yearOfBirth: 1990,
-// 	job: 'programmer'
-// };
 
 var Person = function(name, yearOfBirth,job) {
 	this.name = name;
