@@ -151,10 +151,74 @@ interviewQuestion('teacher')('wafaa');
 */
 
 //IIFE
-
+/*
 function game() {
 	var score = Math.random() * 10;
 	console.log(score >= 5);
 }
 
 game();
+*/
+
+//Closures !
+/*
+function pensiun(umurPensiun) {
+	var a = ' thn lagi sampai pensiun.';
+	return function(tahunLahir) {
+		var age = 2017 - tahunLahir;
+		console.log((umurPensiun - age) + a);
+	} 
+}
+
+var pensiunUS = pensiun(66);
+pensiunUS(1990);
+var retirementGermany = pensiun(65);
+var retirementIceland = pensiun(67);
+
+retirementGermany(1990);
+retirementIceland(1990);
+pensiunUS(1990);
+
+function interviewQuestion(job) {
+	return function(name) {
+		if(job === 'designer') {
+			console.log(name + ', can you please explain what UX desing is?');
+		} else if (job === 'teacher') {
+			console.log('What subject do you teach, ' + name +'?');
+		} else {
+			console.log('Hello ' + name +' what do you do?');
+		}
+	}
+}
+
+interviewQuestion('teacher')('Uwais');
+*/
+
+//Bind, call and apply
+
+var uwais = {
+	name: 'Uwais',
+	age: 6,
+	job: 'programmer',
+	presentation: function(style,timeOfDay) {
+		if(style === 'formal') {
+			console.log('Good ' + timeOfDay + ' Ladies and gentlemen! I\'m ' + this.name +
+				', I\'m a ' + this.job + ' and I\'m ' + this.age + ' years old.');
+		} else if (style === 'friendly') {
+			console.log('Hey! what\'s up? I\'m ' + this.name + ', I\'m a ' + this.job + 
+				' and I\'m ' + this.age + ' years old. Have a nice ' + timeOfDay + '.');
+		}
+	}
+}
+var wafaa = {
+	name: 'Wafaa',
+	age: 10,
+	job: 'designer'
+};
+
+uwais.presentation('friendly','morning');
+uwais.presentation.call(wafaa, 'friendly', 'afternoon');
+
+var uwaisFriendly = uwais.presentation.bind(uwais,'friendly');
+uwaisFriendly('morning');
+uwaisFriendly('night');
