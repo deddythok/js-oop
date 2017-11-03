@@ -39,5 +39,3 @@
 
 
 })()
-
-document.querySelector('.main').innerHTML = '<em>wooiii</em>';
